@@ -3,47 +3,100 @@
 <div class="bg-gray-100 p-4 min-h-screen">
   <h1 class="text-3xl font-bold mb-1 ">Examen</h1>
   <input type="file" (change)="ReadExcel($event)">
-  <table class="w-full border-collapse mt-4">
-    <thead>
-      <tr>
-        <th>PRIMER NOMBRE</th>
-        <th>SEGUNDO NOMBRE</th>
-        <th>APELLIDO PATERNO</th>
-        <th>APELLIDO MATERNO</th>
-        <th>FECHA DE NACIMIENTO</th>
-        <th>RFC</th>
-        <th>COLONIA O POBLACIÓN</th>
-        <th>DELEGACIÓN O MUNICIPIO</th>
-        <th>CIUDAD</th>
-        <th>ESTADO</th>
-        <th>C.P.</th>
-        <th>DIRECCIÓN CALLE NÚMERO</th>
-        <th>SALDO ACTUAL</th>
-        <th>LÍMITE DE CRÉDITO</th>
-        <th>SALDO VENCIDO</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of ExcelData">
-        <th scope="row">{{item.__rowNum__}}</th>
-        <td>{{ item.PRIMER_NOMBRE }}</td>
-        <td>{{ item.SEGUNDO_NOMBRE }}</td>
-        <td>{{ item.APELLIDO_PATERNO }}</td>
-        <td>{{ item.APELLIDO_MATERNO }}</td>
-        <td>{{ item.FECHA_DE_NACIMIENTO }}</td>
-        <td>{{ item.RFC }}</td>
-        <td>{{ item.COLONIA_O_POBLACION }}</td>
-        <td>{{ item.DELEGACION_O_MUNICIPIO }}</td>
-        <td>{{ item.CIUDAD }}</td>
-        <td>{{ item.ESTADO }}</td>
-        <td>{{ item.CP }}</td>
-        <td>{{ item.DIRECCION_CALLE_NUMERO }}</td>
-        <td>{{ item.SALDO_ACTUAL }}</td>
-        <td>{{ item.LIMITE_DE_CREDITO }}</td>
-        <td>{{ item.SALDO_VENCIDO }}</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-2 border-collapse border border-gray-300">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">N. Registro</th>
+          <th scope="col" class="px-6 py-3">PRIMER NOMBRE</th>
+          <th scope="col" class="px-6 py-3">APELLIDO PATERNO</th>
+          <th scope="col" class="px-6 py-3">SEGUNDO NOMBRE</th>
+          <th scope="col" class="px-6 py-3">APELLIDO MATERNO</th>
+          <th scope="col" class="px-6 py-3">FECHA DE NACIMIENTO</th>
+          <th scope="col" class="px-6 py-3">RFC</th>
+          <th scope="col" class="px-6 py-3">COLONIA O POBLACIÓN</th>
+          <th scope="col" class="px-6 py-3">DELEGACIÓN O MUNICIPIO</th>
+          <th scope="col" class="px-6 py-3">CIUDAD</th>
+          <th scope="col" class="px-6 py-3">ESTADO</th>
+          <th scope="col" class="px-6 py-3">C.P.</th>
+          <th scope="col" class="px-6 py-3">DIRECCIÓN CALLE NÚMERO</th>
+          <th scope="col" class="px-6 py-3">SALDO ACTUAL</th>
+          <th scope="col" class="px-6 py-3">LÍMITE DE CRÉDITO</th>
+          <th scope="col" class="px-6 py-3">SALDO VENCIDO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  class="bg-white border-b " *ngFor="let item of ExcelData">
+          
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.__rowNum__ }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.PRIMER_NOMBRE }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.SEGUNDO_NOMBRE }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.APELLIDO_PATERNO }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.APELLIDO_MATERNO }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.FECHA_DE_NACIMIENTO }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.RFC }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.COLONIA_O_POBLACION }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.DELEGACION_O_MUNICIPIO }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.CIUDAD }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.ESTADO }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item['C.P.'] }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.DIRECCION_CALLE_NUMERO }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.SALDO_ACTUAL }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.LIMITE_DE_CREDITO }}
+          </td>
+
+          <td class="px-3 py-3 border border-gray-300">
+            {{ item.SALDO_VENCIDO }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 
 </div>
 
