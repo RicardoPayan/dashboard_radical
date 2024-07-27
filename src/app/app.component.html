@@ -14,22 +14,68 @@
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-2 border-collapse border border-gray-300">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th scope="col" class="px-6 py-3">N. Registro</th>
-          <th scope="col" class="px-6 py-3">PRIMER NOMBRE</th>
-          <th scope="col" class="px-6 py-3">APELLIDO PATERNO</th>
-          <th scope="col" class="px-6 py-3">SEGUNDO NOMBRE</th>
-          <th scope="col" class="px-6 py-3">APELLIDO MATERNO</th>
-          <th scope="col" class="px-6 py-3">FECHA DE NACIMIENTO</th>
-          <th scope="col" class="px-6 py-3">RFC</th>
-          <th scope="col" class="px-6 py-3">COLONIA O POBLACIÓN</th>
-          <th scope="col" class="px-6 py-3">DELEGACIÓN O MUNICIPIO</th>
-          <th scope="col" class="px-6 py-3">CIUDAD</th>
-          <th scope="col" class="px-6 py-3">ESTADO</th>
-          <th scope="col" class="px-6 py-3">C.P.</th>
-          <th scope="col" class="px-6 py-3">DIRECCIÓN CALLE NÚMERO</th>
-          <th scope="col" class="px-6 py-3">SALDO ACTUAL</th>
-          <th scope="col" class="px-6 py-3">LÍMITE DE CRÉDITO</th>
-          <th scope="col" class="px-6 py-3">SALDO VENCIDO</th>
+          <th scope="col" class="px-6 py-3">
+            N. Registro
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            PRIMER NOMBRE
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            APELLIDO PATERNO
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            SEGUNDO NOMBRE
+          </th>
+          <th scope="col" class="px-6 py-3">
+            APELLIDO MATERNO
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            FECHA DE NACIMIENTO
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            RFC
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            COLONIA O POBLACIÓN
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            DELEGACIÓN O MUNICIPIO
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            CIUDAD
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            ESTADO
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            C.P.
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            DIRECCIÓN CALLE NÚMERO
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            SALDO ACTUAL
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            LÍMITE DE CRÉDITO
+          </th>
+
+          <th scope="col" class="px-6 py-3">
+            SALDO VENCIDO
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -104,7 +150,10 @@
     
   </div>
   
-  <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" extLabel="Siguiente"></pagination-controls>
+  <div class="mt-2 h-scren flex items-center justify-center">
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" extLabel="Siguiente"></pagination-controls>
+  </div>
+  
 </div>
 
 
