@@ -21,6 +21,9 @@ export class AppComponent {
   ExcelData: Record[] = [];
   minSaldo: Record | null = null;
   maxSaldo: Record | null = null;
+  totalRecords: string='';
+  saldoDisponible: number = 0;
+  totalSaldo: number = 0;
   
   constructor(){}
 
@@ -46,13 +49,14 @@ export class AppComponent {
         item.DELEGACION_O_MUNICIPIO,
         item.CIUDAD,
         item.ESTADO,
-        item.CP,
+        item['C.P.'],
         item.DIRECCION_CALLE_NUMERO,
-        item.SALDO_ACTUAL,
-        item.LIMITE_DE_CREDITO,
-        item.SALDO_VENCIDO
+        Number(item.SALDO_ACTUAL),
+        Number(item.LIMITE_DE_CREDITO),
+        Number(item.SALDO_VENCIDO)
       ));
 
+      this.totalRecords = this.ExcelData.length.toString();
       this.findMinAndMaxSaldoActual();
     }
 
