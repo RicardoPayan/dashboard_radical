@@ -17,6 +17,9 @@ export class AppComponent {
   page!:number;
 
   ExcelData: any
+  minSaldoActual!: any;
+  maxSaldoActual!: any;
+
   constructor(){}
 
   ReadExcel(event:any){
@@ -29,9 +32,25 @@ export class AppComponent {
       var workBook = XLSX.read(fileReader.result, {type:'binary'});
       var sheetNames = workBook.SheetNames;
       this.ExcelData = XLSX.utils.sheet_to_json(workBook.Sheets[sheetNames[0]])
-      console.log(this.ExcelData)
+
+      this.findMinAndMaxSaldoActual();
     }
 
+  }
+
+  findMinAndMaxSaldoActual(){
+    if (this.ExcelData && this.ExcelData.length > 0) {
+      this.minSaldoActual = this.ExcelData.reduce((prev: any, curr: any) => {
+        return (prev.SALDO_ACTUAL < curr.SALDO_ACTUAL) ? prev : curr;
+      });
+
+      this.maxSaldoActual = this.ExcelData.reduce((prev: any, curr: any) => {
+        return (prev.SALDO_ACTUAL > curr.SALDO_ACTUAL) ? prev : curr;
+      });
+
+      console.log("Persona con menor saldo actual:", this.minSaldoActual);
+      console.log("Persona con mayor saldo actual:", this.maxSaldoActual);
+    }
   }
 }
 

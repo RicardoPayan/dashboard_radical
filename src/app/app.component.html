@@ -10,6 +10,17 @@
   </button>
   <input type="file" #fileInput (change)="ReadExcel($event)" style="display: none;">
 
+
+  <div *ngIf="minSaldoActual">
+    <h2 class="text-xl font-semibold">Persona con menor saldo actual</h2>
+    <p>{{ minSaldoActual.PRIMER_NOMBRE }} {{ minSaldoActual.APELLIDO_PATERNO }}: {{ minSaldoActual.SALDO_ACTUAL }}</p>
+  </div>
+
+  <div *ngIf="maxSaldoActual">
+    <h2 class="text-xl font-semibold">Persona con mayor saldo actual</h2>
+    <p>{{ maxSaldoActual.PRIMER_NOMBRE }} {{ maxSaldoActual.APELLIDO_PATERNO }}: {{ maxSaldoActual.SALDO_ACTUAL }}</p>
+  </div>
+
   <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-2 border-collapse border border-gray-300">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
