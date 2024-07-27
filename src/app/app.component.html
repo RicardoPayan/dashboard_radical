@@ -4,22 +4,25 @@
   
   <button 
   (click)="fileInput.click()" 
-  class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+  class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
   >
     Cargar Archivo Excel
   </button>
   <input type="file" #fileInput (change)="ReadExcel($event)" style="display: none;">
 
 
-  <div *ngIf="minSaldo">
-    <h2 class="text-xl font-semibold">Persona con menor saldo actual</h2>
-    <p>{{ minSaldo.PRIMER_NOMBRE }} {{ minSaldo.APELLIDO_PATERNO }}: {{ minSaldo.SALDO_ACTUAL }}</p>
+<div class="flex flex-col md:flex-row md:space-x-2 space-y-2 md:space-y-0">
+  <div *ngIf="minSaldo" class="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow ">
+    <p class="font-semibold">Persona con menor saldo actual</p>
+    <p>{{ minSaldo.PRIMER_NOMBRE }} {{ minSaldo.APELLIDO_PATERNO }} {{minSaldo.APELLIDO_MATERNO}}: {{ minSaldo.SALDO_ACTUAL | currency}}</p>
   </div>
 
-  <div *ngIf="maxSaldo">
-    <h2 class="text-xl font-semibold">Persona con mayor saldo actual</h2>
-    <p>{{ maxSaldo.PRIMER_NOMBRE }} {{ maxSaldo.APELLIDO_PATERNO }}: {{ maxSaldo.SALDO_ACTUAL }}</p>
+  <div *ngIf="maxSaldo" class="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow">
+    <h2 class="font-semibold">Persona con mayor saldo actual</h2>
+    <p>{{ maxSaldo.PRIMER_NOMBRE }} {{ maxSaldo.APELLIDO_PATERNO }} {{maxSaldo.APELLIDO_MATERNO}}: {{ maxSaldo.SALDO_ACTUAL | currency}}</p>
   </div>
+</div>
+
 
   <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-2 border-collapse border border-gray-300">
@@ -145,15 +148,15 @@
           </td>
 
           <td class="px-3 py-3 border border-gray-300">
-            {{ item.SALDO_ACTUAL }}
+            {{ item.SALDO_ACTUAL | currency }}
           </td>
 
           <td class="px-3 py-3 border border-gray-300">
-            {{ item.LIMITE_DE_CREDITO }}
+            {{ item.LIMITE_DE_CREDITO |  currency}}
           </td>
 
           <td class="px-3 py-3 border border-gray-300">
-            {{ item.SALDO_VENCIDO }}
+            {{ item.SALDO_VENCIDO |  currency}}
           </td>
         </tr>
       </tbody>

@@ -63,8 +63,6 @@ export class AppComponent {
 
     this.minSaldo = this.ExcelData.reduce((prev, curr) => (prev.SALDO_ACTUAL < curr.SALDO_ACTUAL ? prev : curr));
     this.maxSaldo = this.ExcelData.reduce((prev, curr) => (prev.SALDO_ACTUAL > curr.SALDO_ACTUAL ? prev : curr));
-    console.log('Min Saldo:', this.minSaldo);
-    console.log('Max Saldo:', this.maxSaldo);
   }
 }
 
