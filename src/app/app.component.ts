@@ -5,6 +5,8 @@ import { HeaderComponent } from './components/header/header.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import * as XLSX from 'xlsx'
 
+import { Record } from './models/usuario.model';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -16,10 +18,10 @@ export class AppComponent {
   title = 'examen_radical';
   page!:number;
 
-  ExcelData: any
-  minSaldoActual!: any;
-  maxSaldoActual!: any;
-
+  ExcelData: Record[] = [];
+  minSaldo: Record | null = null;
+  maxSaldo: Record | null = null;
+  
   constructor(){}
 
   ReadExcel(event:any){
@@ -29,9 +31,27 @@ export class AppComponent {
     fileReader.readAsBinaryString(file);
 
     fileReader.onload = (e)=>{
-      var workBook = XLSX.read(fileReader.result, {type:'binary'});
-      var sheetNames = workBook.SheetNames;
-      this.ExcelData = XLSX.utils.sheet_to_json(workBook.Sheets[sheetNames[0]])
+      const workBook = XLSX.read(fileReader.result, {type:'binary'});
+      const sheetNames = workBook.SheetNames;
+      const jsonData = XLSX.utils.sheet_to_json(workBook.Sheets[sheetNames[0]])
+
+      this.ExcelData = jsonData.map((item: any) => new Record(
+        item.PRIMER_NOMBRE,
+        item.SEGUNDO_NOMBRE,
+        item.APELLIDO_PATERNO,
+        item.APELLIDO_MATERNO,
+        item.FECHA_DE_NACIMIENTO,
+        item.RFC,
+        item.COLONIA_O_POBLACION,
+        item.DELEGACION_O_MUNICIPIO,
+        item.CIUDAD,
+        item.ESTADO,
+        item.CP,
+        item.DIRECCION_CALLE_NUMERO,
+        item.SALDO_ACTUAL,
+        item.LIMITE_DE_CREDITO,
+        item.SALDO_VENCIDO
+      ));
 
       this.findMinAndMaxSaldoActual();
     }
@@ -39,18 +59,12 @@ export class AppComponent {
   }
 
   findMinAndMaxSaldoActual(){
-    if (this.ExcelData && this.ExcelData.length > 0) {
-      this.minSaldoActual = this.ExcelData.reduce((prev: any, curr: any) => {
-        return (prev.SALDO_ACTUAL < curr.SALDO_ACTUAL) ? prev : curr;
-      });
+    if (this.ExcelData.length === 0) return;
 
-      this.maxSaldoActual = this.ExcelData.reduce((prev: any, curr: any) => {
-        return (prev.SALDO_ACTUAL > curr.SALDO_ACTUAL) ? prev : curr;
-      });
-
-      console.log("Persona con menor saldo actual:", this.minSaldoActual);
-      console.log("Persona con mayor saldo actual:", this.maxSaldoActual);
-    }
+    this.minSaldo = this.ExcelData.reduce((prev, curr) => (prev.SALDO_ACTUAL < curr.SALDO_ACTUAL ? prev : curr));
+    this.maxSaldo = this.ExcelData.reduce((prev, curr) => (prev.SALDO_ACTUAL > curr.SALDO_ACTUAL ? prev : curr));
+    console.log('Min Saldo:', this.minSaldo);
+    console.log('Max Saldo:', this.maxSaldo);
   }
 }
 

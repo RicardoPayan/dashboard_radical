@@ -11,14 +11,14 @@
   <input type="file" #fileInput (change)="ReadExcel($event)" style="display: none;">
 
 
-  <div *ngIf="minSaldoActual">
+  <div *ngIf="minSaldo">
     <h2 class="text-xl font-semibold">Persona con menor saldo actual</h2>
-    <p>{{ minSaldoActual.PRIMER_NOMBRE }} {{ minSaldoActual.APELLIDO_PATERNO }}: {{ minSaldoActual.SALDO_ACTUAL }}</p>
+    <p>{{ minSaldo.PRIMER_NOMBRE }} {{ minSaldo.APELLIDO_PATERNO }}: {{ minSaldo.SALDO_ACTUAL }}</p>
   </div>
 
-  <div *ngIf="maxSaldoActual">
+  <div *ngIf="maxSaldo">
     <h2 class="text-xl font-semibold">Persona con mayor saldo actual</h2>
-    <p>{{ maxSaldoActual.PRIMER_NOMBRE }} {{ maxSaldoActual.APELLIDO_PATERNO }}: {{ maxSaldoActual.SALDO_ACTUAL }}</p>
+    <p>{{ maxSaldo.PRIMER_NOMBRE }} {{ maxSaldo.APELLIDO_PATERNO }}: {{ maxSaldo.SALDO_ACTUAL }}</p>
   </div>
 
   <div class="relative overflow-x-auto">
@@ -90,10 +90,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr  class="bg-white border-b "*ngFor="let item of ExcelData | paginate: { itemsPerPage: 5, currentPage: page }">
+        <tr  class="bg-white border-b "*ngFor="let i = index ; let item of ExcelData | paginate: { itemsPerPage: 5, currentPage: page }">
           
           <td class="px-3 py-3 border border-gray-300">
-            {{ item.__rowNum__ }}
+            {{ i + 1}}
           </td>
 
           <td class="px-3 py-3 border border-gray-300">
@@ -137,7 +137,7 @@
           </td>
 
           <td class="px-3 py-3 border border-gray-300">
-            {{ item['C.P.'] }}
+            {{ item.CP }}
           </td>
 
           <td class="px-3 py-3 border border-gray-300">
