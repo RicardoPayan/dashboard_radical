@@ -1,73 +1,53 @@
 <app-header></app-header>
 
-<h1 class="text-3xl font-bold">Examen</h1>
-<input type="file" (change)="ReadExcel($event)">
+<div class="bg-gray-100 p-4 min-h-screen">
+  <h1 class="text-3xl font-bold mb-1 ">Examen</h1>
+  <input type="file" (change)="ReadExcel($event)">
+  <table class="w-full border-collapse mt-4">
+    <thead>
+      <tr>
+        <th>PRIMER NOMBRE</th>
+        <th>SEGUNDO NOMBRE</th>
+        <th>APELLIDO PATERNO</th>
+        <th>APELLIDO MATERNO</th>
+        <th>FECHA DE NACIMIENTO</th>
+        <th>RFC</th>
+        <th>COLONIA O POBLACIÓN</th>
+        <th>DELEGACIÓN O MUNICIPIO</th>
+        <th>CIUDAD</th>
+        <th>ESTADO</th>
+        <th>C.P.</th>
+        <th>DIRECCIÓN CALLE NÚMERO</th>
+        <th>SALDO ACTUAL</th>
+        <th>LÍMITE DE CRÉDITO</th>
+        <th>SALDO VENCIDO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of ExcelData">
+        <th scope="row">{{item.__rowNum__}}</th>
+        <td>{{ item.PRIMER_NOMBRE }}</td>
+        <td>{{ item.SEGUNDO_NOMBRE }}</td>
+        <td>{{ item.APELLIDO_PATERNO }}</td>
+        <td>{{ item.APELLIDO_MATERNO }}</td>
+        <td>{{ item.FECHA_DE_NACIMIENTO }}</td>
+        <td>{{ item.RFC }}</td>
+        <td>{{ item.COLONIA_O_POBLACION }}</td>
+        <td>{{ item.DELEGACION_O_MUNICIPIO }}</td>
+        <td>{{ item.CIUDAD }}</td>
+        <td>{{ item.ESTADO }}</td>
+        <td>{{ item.CP }}</td>
+        <td>{{ item.DIRECCION_CALLE_NUMERO }}</td>
+        <td>{{ item.SALDO_ACTUAL }}</td>
+        <td>{{ item.LIMITE_DE_CREDITO }}</td>
+        <td>{{ item.SALDO_VENCIDO }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
 
 
-<table>
-  <thead>
-    <tr>
-      <th>PRIMER NOMBRE</th>
-      <th>SEGUNDO NOMBRE</th>
-      <th>APELLIDO PATERNO</th>
-      <th>APELLIDO MATERNO</th>
-      <th>FECHA DE NACIMIENTO</th>
-      <th>RFC</th>
-      <th>COLONIA O POBLACIÓN</th>
-      <th>DELEGACIÓN O MUNICIPIO</th>
-      <th>CIUDAD</th>
-      <th>ESTADO</th>
-      <th>C.P.</th>
-      <th>DIRECCIÓN CALLE NÚMERO</th>
-      <th>SALDO ACTUAL</th>
-      <th>LÍMITE DE CRÉDITO</th>
-      <th>SALDO VENCIDO</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of ExcelData">
-      <th scope="row">{{item.__rowNum__}}</th>
-      <td>{{ item.PRIMER_NOMBRE }}</td>
-      <td>{{ item.SEGUNDO_NOMBRE }}</td>
-      <td>{{ item.APELLIDO_PATERNO }}</td>
-      <td>{{ item.APELLIDO_MATERNO }}</td>
-      <td>{{ item.FECHA_DE_NACIMIENTO }}</td>
-      <td>{{ item.RFC }}</td>
-      <td>{{ item.COLONIA_O_POBLACION }}</td>
-      <td>{{ item.DELEGACION_O_MUNICIPIO }}</td>
-      <td>{{ item.CIUDAD }}</td>
-      <td>{{ item.ESTADO }}</td>
-      <td>{{ item.CP }}</td>
-      <td>{{ item.DIRECCION_CALLE_NUMERO }}</td>
-      <td>{{ item.SALDO_ACTUAL }}</td>
-      <td>{{ item.LIMITE_DE_CREDITO }}</td>
-      <td>{{ item.SALDO_VENCIDO }}</td>
-    </tr>
-  </tbody>
-</table>
 
-<style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
 
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
 
-  th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-
-  tr:hover {
-    background-color: #ddd;
-  }
-</style>
