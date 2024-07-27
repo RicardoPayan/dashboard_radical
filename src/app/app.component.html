@@ -1,11 +1,10 @@
 <app-header></app-header>
 
 <div class="bg-gray-100 p-4 min-h-screen">
-  <h1 class="text-3xl font-bold mb-2 ">Examen</h1>
-
+  
   <button 
   (click)="fileInput.click()" 
-  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+  class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
   >
     Cargar Archivo Excel
   </button>
@@ -34,7 +33,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr  class="bg-white border-b " *ngFor="let item of ExcelData">
+        <tr  class="bg-white border-b "*ngFor="let item of ExcelData | paginate: { itemsPerPage: 5, currentPage: page }">
           
           <td class="px-3 py-3 border border-gray-300">
             {{ item.__rowNum__ }}
@@ -102,9 +101,10 @@
         </tr>
       </tbody>
     </table>
+    
   </div>
   
-
+  <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" extLabel="Siguiente"></pagination-controls>
 </div>
 
 
