@@ -43,7 +43,7 @@ export class AppComponent {
         item.SEGUNDO_NOMBRE,
         item.APELLIDO_PATERNO,
         item.APELLIDO_MATERNO,
-        item.FECHA_DE_NACIMIENTO,
+        this.formatDate(item.FECHA_DE_NACIMIENTO),
         item.RFC,
         item.COLONIA_O_POBLACION,
         item.DELEGACION_O_MUNICIPIO,
@@ -60,6 +60,14 @@ export class AppComponent {
       this.findMinAndMaxSaldoActual();
     }
 
+  }
+
+  formatDate(dateStr: string): string {
+    if (dateStr.length !== 8) return dateStr; // Devolver tal cual si no tiene 8 caracteres
+    const day = dateStr.substring(0, 2);
+    const month = dateStr.substring(2, 4);
+    const year = dateStr.substring(4, 8);
+    return `${day}/${month}/${year}`;
   }
 
   findMinAndMaxSaldoActual(){
