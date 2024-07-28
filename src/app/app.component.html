@@ -11,23 +11,7 @@
   <input type="file" #fileInput (change)="ReadExcel($event)" style="display: none;">
 
 
-<div class="flex flex-col md:flex-row md:space-x-2 space-y-2 md:space-y-0">
 
-  <div *ngIf="maxSaldo" class="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow">
-    <h2 class="font-semibold">Total de registros: </h2>
-    <p>{{ totalRecords}}</p>
-  </div>
-
-  <div *ngIf="minSaldo" class="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow ">
-    <p class="font-semibold">Persona con menor saldo actual</p>
-    <p>{{ minSaldo.PRIMER_NOMBRE }} {{ minSaldo.APELLIDO_PATERNO }} {{minSaldo.APELLIDO_MATERNO}}: {{ minSaldo.SALDO_ACTUAL | currency}}</p>
-  </div>
-
-  <div *ngIf="maxSaldo" class="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow">
-    <h2 class="font-semibold">Persona con mayor saldo actual</h2>
-    <p>{{ maxSaldo.PRIMER_NOMBRE }} {{ maxSaldo.APELLIDO_PATERNO }} {{maxSaldo.APELLIDO_MATERNO}}: {{ maxSaldo.SALDO_ACTUAL | currency}}</p>
-  </div>
-</div>
 
 
   <div class="relative overflow-x-auto">
@@ -192,6 +176,24 @@
   
   <div class="mt-2 h-scren flex items-center justify-center">
     <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+  </div>
+
+  <div class="flex flex-col mb-2 md:flex-row md:space-x-2 space-y-2 md:space-y-0">
+
+    <div *ngIf="maxSaldo" class="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow">
+      <h2 class="font-semibold">Total de registros: </h2>
+      <p>{{ totalRecords}}</p>
+    </div>
+  
+    <div *ngIf="minSaldo" class="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow ">
+      <p class="font-semibold">Persona con menor saldo actual</p>
+      <p>{{ minSaldo.PRIMER_NOMBRE }} {{ minSaldo.APELLIDO_PATERNO }} {{minSaldo.APELLIDO_MATERNO}}: {{ minSaldo.SALDO_ACTUAL | currency}}</p>
+    </div>
+  
+    <div *ngIf="maxSaldo" class="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow">
+      <h2 class="font-semibold">Persona con mayor saldo actual</h2>
+      <p>{{ maxSaldo.PRIMER_NOMBRE }} {{ maxSaldo.APELLIDO_PATERNO }} {{maxSaldo.APELLIDO_MATERNO}}: {{ maxSaldo.SALDO_ACTUAL | currency}}</p>
+    </div>
   </div>
   
   <app-charts [ExcelData]="ExcelData"></app-charts>
