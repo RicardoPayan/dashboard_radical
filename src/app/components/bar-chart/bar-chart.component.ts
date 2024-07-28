@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
+import { Record } from '../../models/usuario.model';
 import {Chart} from 'chart.js/auto'
 
 @Component({

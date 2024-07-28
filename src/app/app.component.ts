@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { ChartsComponent } from './components/charts/charts.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import * as XLSX from 'xlsx'
 
@@ -11,7 +12,7 @@ import { Record } from './models/usuario.model';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, HeaderComponent, NgxPaginationModule, BarChartComponent],
+  imports: [RouterOutlet, CommonModule, HeaderComponent, NgxPaginationModule, BarChartComponent, ChartsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
