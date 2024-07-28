@@ -1,12 +1,21 @@
 <header>
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 shadow-sm">
-        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-            <a href="https://radicalsoftware.com.mx" class="flex items-center">
-                <img src="https://radicalsoftware.com.mx/wp-content/uploads/2023/08/2023-logo-leyenda.png" class="mr-3 h-6 sm:h-9" alt="Radical Logo" />
-            </a>
-            <div class="flex items-center lg:order-2">
-               <h1 class="text-2xl font-bold">Examen Radical Software</h1>
-            </div>
+      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+        <a href="https://radicalsoftware.com.mx" class="flex items-center">
+          <img src="https://radicalsoftware.com.mx/wp-content/uploads/2023/08/2023-logo-leyenda.png" class="mr-3 h-6 sm:h-9" alt="Radical Logo" />
+        </a>
+        <div class="flex items-center">
+          <h1 class="text-2xl font-bold">Examen Radical Software</h1>
         </div>
+        <div *ngIf="weather" class="flex items-center ml-4">
+          <img [src]="'http://openweathermap.org/img/w/' + weather.weather[0].icon + '.png'" alt="Weather Icon" class="w-8 h-8 mr-2">
+          <div class="text-sm">
+            <p>Hermosillo, Sonora</p>
+            <p>{{ weather.main.temp }} °C</p>
+            <p>{{ weather.weather[0].description }}</p>
+          </div>
+        </div>
+      </div>
     </nav>
-</header>
+  </header>
+  
