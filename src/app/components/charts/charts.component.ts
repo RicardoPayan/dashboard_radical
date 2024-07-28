@@ -43,6 +43,8 @@ export class ChartsComponent implements OnChanges {
         }]
       },
       options:{
+        responsive : true,
+        maintainAspectRatio: true,
         scales : {
           y : {
             beginAtZero : true
@@ -73,7 +75,11 @@ export class ChartsComponent implements OnChanges {
           ],
           borderWidth: 1
         }]
-      }
+      },
+      options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
     })
   }
 }
