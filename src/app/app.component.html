@@ -85,13 +85,10 @@
 
           <th scope="col" class="px-6 py-3">
             TOTAL
-          </th>
-
-
-         
+          </th>     
       </thead>
       <tbody>
-        <tr  class="bg-white border-b "*ngFor="let i = index ; let item of ExcelData | paginate: { itemsPerPage: 5, currentPage: page }">
+        <tr  class="bg-white border-b "*ngFor="let i = index let item of ExcelData | paginate: { itemsPerPage: 5, currentPage: page }">
           
           <td class="px-3 py-3 border border-gray-300">
             {{ i + 1}}
