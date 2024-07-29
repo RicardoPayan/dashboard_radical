@@ -49,9 +49,9 @@ Esta aplicación web permite cargar un archivo `.xlsx`, visualizar y analizar da
   - **Gráfica de Pie**: Muestra una gráfica de pie con `LIMITE_DE_CREDITO` como 100%, mostrando `SALDO_ACTUAL` y `SALDO_DISPONIBLE`.
 
 
-    ![inicio]('imagenes_readme/inicio.png')
-    ![grafica]('imagenes_readme/grafica.png')
-    ![cambio]('imagenes_readme/cambio.png')
+    ![inicio](imagenes_readme/inicio.png)
+    ![grafica](imagenes_readme/graficas.png)
+    ![cambio](imagenes_readme/cambio.png)
 
 
  **Datos Adicionales**:
