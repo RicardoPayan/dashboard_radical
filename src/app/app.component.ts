@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { ChartsComponent } from './components/charts/charts.component';
+import { BanxicoService } from './services/banxico.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import * as XLSX from 'xlsx'
 
@@ -25,8 +26,15 @@ export class AppComponent {
   totalRecords: string='';
   saldoDisponible: number = 0;
   totalSaldo: number = 0;
+
+  //Para la comunicacion con la API de banxico
+  tipoCambioData: any;
+  token: string = '618b39bec687ca6ff4174d72c8a757d0db73b0cb4f943ef18b91670680d50b55';  
+  fechaIni: string = '2015-01-01'; 
+  fechaFin: string = '2015-01-02';
+
   
-  constructor(){}
+  constructor(private banxicoService : BanxicoService){}
 
   ReadExcel(event:any){
     let file = event.target.files[0];
@@ -76,6 +84,22 @@ export class AppComponent {
 
     this.minSaldo = this.ExcelData.reduce((prev, curr) => (prev.SALDO_ACTUAL < curr.SALDO_ACTUAL ? prev : curr));
     this.maxSaldo = this.ExcelData.reduce((prev, curr) => (prev.SALDO_ACTUAL > curr.SALDO_ACTUAL ? prev : curr));
+  }
+
+  getTipoCambio(){
+    this.banxicoService.getTipoCambio(this.fechaIni, this.fechaFin, this.token).subscribe(
+      data=>{
+        this.tipoCambioData = data;
+        console.log(this.tipoCambioData)
+      },
+      error =>{
+        console.error('Error fetching tipo cambio data', error);
+      }
+    )
+  };
+
+  obtenerCambioButton(){
+    this.getTipoCambio();
   }
 }
 
