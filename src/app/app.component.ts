@@ -5,6 +5,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ChartsComponent } from './components/charts/charts.component';
 import { BanxicoService } from './services/banxico.service';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
 import * as XLSX from 'xlsx'
 
 import { Record } from './models/usuario.model';
@@ -12,7 +13,7 @@ import { Record } from './models/usuario.model';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, HeaderComponent, NgxPaginationModule,ChartsComponent],
+  imports: [RouterOutlet, CommonModule, HeaderComponent, NgxPaginationModule,ChartsComponent, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -29,9 +30,9 @@ export class AppComponent {
 
   //Para la comunicacion con la API de banxico
   tipoCambioData: any;
-  token: string = '618b39bec687ca6ff4174d72c8a757d0db73b0cb4f943ef18b91670680d50b55';  
-  fechaIni: string = '2015-01-01'; 
-  fechaFin: string = '2015-01-02';
+  token: string = '';  
+  fechaIni: string = ''; 
+  fechaFin: string = '';
 
   
   constructor(private banxicoService : BanxicoService){}
