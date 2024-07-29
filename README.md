@@ -1,5 +1,11 @@
 # ExamenRadical: Gestión de Datos y Visualización de Información
 
+
+<div style="display: flex; gap: 10px;">
+    <img src="imagenes_readme/angular.png" alt="Angular" width="100" />
+    <img src="imagenes_readme/tailwindcss.png" alt="TailwindCSS" width="100" />
+</div>
+
 Esta aplicación web permite cargar un archivo `.xlsx`, visualizar y analizar datos, así como obtener información adicional como el tipo de cambio y la temperatura actual de la ciudad. La aplicación proporciona funcionalidades de paginación, gráficos, y validación de datos. Realizada con Angular 18.
 
 ## Requisitos
@@ -59,7 +65,9 @@ Esta aplicación web permite cargar un archivo `.xlsx`, visualizar y analizar da
   - **Tipo de Cambio FIX**: Permite consultar el tipo de cambio FIX de Banxico para un rango de fechas proporcionado. Requiere un token de autenticación que se puede obtener en [Banxico API Token](https://www.banxico.org.mx/SieAPIRest/service/v1/token).
 
  **Librerias adicionales**:
+ - **[TailwindCSS](https://tailwindcss.com)**: Framework para estilos CSS con enfoque "utiliy-first"
   - **[chart.js](https://www.chartjs.org)**: Biblioteca para el despligue de diferente tipos de graficas.
   - **[xlsx](https://www.npmjs.com/package/xlsx)**: Biblioteca para el manejo de archivos tipo `.xlsx`.
   - **[ngx-pagination](https://www.npmjs.com/package/ngx-pagination)**: Biblioteca para crear paginaciones.
+  
   
