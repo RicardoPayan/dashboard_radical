@@ -19,10 +19,14 @@ import { Record } from './models/usuario.model';
 })
 export class AppComponent {
   title = 'examen_radical';
+
+  //Variables para controlar las paginaciones
   page!:number;
   pageCambio : number = 1
 
-  ExcelData: Record[] = [];
+
+  //Variables para el manejo de los datos proporcionados por el archivo
+  ExcelData: Record[] = []; //Aqui se guardara la informacion del archivo xlsx
   minSaldo: Record | null = null;
   maxSaldo: Record | null = null;
   totalRecords: string='';
@@ -37,6 +41,8 @@ export class AppComponent {
 
   
   constructor(private banxicoService : BanxicoService){}
+  
+  // Función para leer el archivo Excel que se acciona con un boton
   ReadExcel(event: any): void {
     const file = event.target.files[0];
   
@@ -80,6 +86,7 @@ export class AppComponent {
   
         const jsonData = XLSX.utils.sheet_to_json(sheet);
   
+         // Mapear los datos a objetos Record
         this.ExcelData = jsonData.map((item: any) => new Record(
           item.PRIMER_NOMBRE,
           item.SEGUNDO_NOMBRE,
@@ -97,9 +104,13 @@ export class AppComponent {
           Number(item.LIMITE_DE_CREDITO),
           Number(item.SALDO_VENCIDO)
         ));
+
+        
   
         this.totalRecords = this.ExcelData.length.toString();
         this.findMinAndMaxSaldoActual();
+
+        //Manejo de errores que pueden surgir al leer el archivo
       } catch (error) {
         console.error('Error al leer el archivo Excel', error);
         alert('Ocurrió un error al procesar el archivo Excel. Por favor, asegúrate de que el archivo sea válido y vuelva a intentarlo.');
@@ -112,6 +123,7 @@ export class AppComponent {
     };
   }
 
+  // Función para formatear la fecha en formato DD/MM/YYYY
   formatDate(dateStr: string): string {
     if (dateStr.length !== 8) return dateStr; // Devolver tal cual si no tiene 8 caracteres
     const day = dateStr.substring(0, 2);
@@ -120,6 +132,7 @@ export class AppComponent {
     return `${day}/${month}/${year}`;
   }
 
+  // Función para encontrar el registro con el saldo mínimo y máximo
   findMinAndMaxSaldoActual(){
     if (this.ExcelData.length === 0) return;
 
@@ -128,7 +141,7 @@ export class AppComponent {
   }
 
 
-  //Funcion que obtiene los datos que nos importan, en este caso las fechas y el cambio
+  //Funcion que obtiene los datos que nos importan desde la API de banxico, en este caso las fechas y el cambio
   obtenerCambioButton(): void {
 
     if (!this.token || !this.fechaIni || !this.fechaFin) {
@@ -146,6 +159,7 @@ export class AppComponent {
       return;
     }
 
+    // Consultar el tipo de cambio si todos los campos son válido
     if (this.token && this.fechaIni && this.fechaFin) {
       this.banxicoService.getTipoCambio(this.fechaIni, this.fechaFin, this.token).subscribe(
         (response: any) => {

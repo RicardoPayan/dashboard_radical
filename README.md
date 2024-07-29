@@ -61,7 +61,7 @@ Esta aplicación web permite cargar un archivo `.xlsx`, visualizar y analizar da
 
 
  **Datos Adicionales**:
-  - **Temperatura Actual**: Muestra la temperatura actual de la ciudad utilizando una Web API del clima (OpenWeatherMap).
+  - **Temperatura Actual**: Muestra la temperatura actual de la ciudad utilizando una Web API del clima ([OpenWeatherMap](https://openweathermap.org)).
   - **Tipo de Cambio FIX**: Permite consultar el tipo de cambio FIX de Banxico para un rango de fechas proporcionado. Requiere un token de autenticación que se puede obtener en [Banxico API Token](https://www.banxico.org.mx/SieAPIRest/service/v1/token).
 
  **Librerias adicionales**:

@@ -1,3 +1,5 @@
+//Modelo que tiene la estructura basica de un registro. Basado en el archivo base.xlsx
+
 export class Record {
   public SALDO_DISPONIBLE: number;
   public TOTAL_SALDO: number;

@@ -8,8 +8,10 @@ import { Observable } from 'rxjs';
 })
 export class BanxicoService {
 
+  //Manejo del consumode la API de banxico.
+
   private baseUrl = 'https://www.banxico.org.mx/SieAPIRest/service/v1/series/'
-  private idSerie = 'SF43718'
+  private idSerie = 'SF43718' //La serie que nos interesa para el ejercicio.
   constructor(private http:HttpClient) { }
 
   getTipoCambio(fechaIni : string, fechaFin : string, token : string){
