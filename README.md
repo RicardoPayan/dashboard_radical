@@ -1,27 +1,65 @@
-# ExamenRadical
+# ExamenRadical: Gestión de Datos y Visualización de Información
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
+Esta aplicación web permite cargar un archivo `.xlsx`, visualizar y analizar datos, así como obtener información adicional como el tipo de cambio y la temperatura actual de la ciudad. La aplicación proporciona funcionalidades de paginación, gráficos, y validación de datos. Realizada con Angular 18.
 
-## Development server
+## Requisitos
+1. Node.js y npm.
+2. Angular 18.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Instalación
 
-## Code scaffolding
+1. **Clonar el Repositorio**:
+   ```bash
+   git clone https://github.com/RicardoPayan/dashboard_radical.git
+   cd dashboard_radical
+2. **Instala dependencias**:
+   ```bash
+   npm install
+3. **Correr Proyecto**:
+   ```bash
+   ng serve
+    ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Funcionalidades
+- **Cargar Archivo xlsx**: Permite cargar una hoja de calculo con extensión `.xlsx`, que debe contener datos con las siguientes columnas:
+  - `PRIMER_NOMBRE`
+  - `SEGUNDO_NOMBRE`
+  - `APELLIDO_PATERNO`
+  - `APELLIDO_MATERNO`
+  - `FECHA_DE_NACIMIENTO`
+  - `RFC`
+  - `COLONIA_O_POBLACION`
+  - `DELEGACION_O_MUNICIPIO`
+  - `CIUDAD`
+  - `ESTADO`
+  - `C.P.`
+  - `DIRECCION_CALLE_NUMERO`
+  - `SALDO_ACTUAL`
+  - `LIMITE_DE_CREDITO`
+  - `SALDO_VENCIDO`
+  
 
-## Build
+ **Visualización de Datos**:
+  - **Tabla**: Muestra el contenido del archivo `.xlsx` con paginación y responsividad.
+  - **Nombre Completo con Menor Saldo**: Muestra el nombre completo de la persona con el menor `SALDO_ACTUAL`.
+  - **Nombre Completo con Mayor Saldo**: Muestra el nombre completo de la persona con el mayor `SALDO_ACTUAL`.
+  - **Sumas Totales**: Calcula y muestra la suma de `SALDO_ACTUAL`, `LIMITE_DE_CREDITO`, `SALDO_VENCIDO` y `SALDO_DISPONIBLE` (donde `SALDO_DISPONIBLE` = `LIMITE_DE_CREDITO` - `SALDO_ACTUAL`).
+  - **Total de Registros**: Muestra el número total de registros en el archivo `.xlsx`.
+  - **Gráfica de Barras**: Muestra una gráfica de barras con `ESTADO` en el eje X y `SALDO_ACTUAL` en el eje Y.
+  - **Gráfica de Pie**: Muestra una gráfica de pie con `LIMITE_DE_CREDITO` como 100%, mostrando `SALDO_ACTUAL` y `SALDO_DISPONIBLE`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+    ![inicio]('imagenes_readme/inicio.png')
+    ![grafica]('imagenes_readme/grafica.png')
+    ![cambio]('imagenes_readme/cambio.png')
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+ **Datos Adicionales**:
+  - **Temperatura Actual**: Muestra la temperatura actual de la ciudad utilizando una Web API del clima (OpenWeatherMap).
+  - **Tipo de Cambio FIX**: Permite consultar el tipo de cambio FIX de Banxico para un rango de fechas proporcionado. Requiere un token de autenticación que se puede obtener en [Banxico API Token](https://www.banxico.org.mx/SieAPIRest/service/v1/token).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+ **Librerias adicionales**:
+  - **[chart.js](https://www.chartjs.org)**: Biblioteca para el despligue de diferente tipos de graficas.
+  - **[xlsx](https://www.npmjs.com/package/xlsx)**: Biblioteca para el manejo de archivos tipo `.xlsx`.
+  - **[ngx-pagination](https://www.npmjs.com/package/ngx-pagination)**: Biblioteca para crear paginaciones.
+  
