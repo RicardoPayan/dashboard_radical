@@ -236,7 +236,40 @@
         
       </div>
 
+      <div class="relative overflow-x-auto mt-4">
+        <table class="md:w-1/2 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-2 border-collapse border border-gray-300">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="px-6 py-3">
+                Fecha
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Tipo de Cambio
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of tipoCambioData |paginate: { itemsPerPage: 10, currentPage: pageCambio } let i = index " class="bg-white border-b">
+              <td class="px-6 py-3 border border-gray-300">
+                {{ item.fecha }}
+              </td>
+              <td class="px-6 py-3 border border-gray-300">
+                {{ item.dato | currency }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="mt-2 h-scren flex ">
+          <pagination-controls (pageChange)="pageCambio = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+        </div>
+      </div>
+    
       
+
+      <div *ngIf="tipoCambioData.length === 0" class="text-center text-gray-500 mt-4">
+        No hay datos disponibles para mostrar.
+      </div>
      
     
   </div>

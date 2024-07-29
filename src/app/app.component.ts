@@ -20,6 +20,7 @@ import { Record } from './models/usuario.model';
 export class AppComponent {
   title = 'examen_radical';
   page!:number;
+  pageCambio : number = 1
 
   ExcelData: Record[] = [];
   minSaldo: Record | null = null;
@@ -29,7 +30,7 @@ export class AppComponent {
   totalSaldo: number = 0;
 
   //Para la comunicacion con la API de banxico
-  tipoCambioData: any;
+  tipoCambioData: any[] = [];
   token: string = '';  
   fechaIni: string = ''; 
   fechaFin: string = '';
@@ -87,20 +88,19 @@ export class AppComponent {
     this.maxSaldo = this.ExcelData.reduce((prev, curr) => (prev.SALDO_ACTUAL > curr.SALDO_ACTUAL ? prev : curr));
   }
 
-  getTipoCambio(){
-    this.banxicoService.getTipoCambio(this.fechaIni, this.fechaFin, this.token).subscribe(
-      data=>{
-        this.tipoCambioData = data;
-        console.log(this.tipoCambioData)
-      },
-      error =>{
-        console.error('Error fetching tipo cambio data', error);
-      }
-    )
-  };
 
-  obtenerCambioButton(){
-    this.getTipoCambio();
+  //Funcion que obtiene los datos que nos importan, en este caso las fechas y el cambio
+  obtenerCambioButton(): void {
+    if (this.token && this.fechaIni && this.fechaFin) {
+      this.banxicoService.getTipoCambio(this.fechaIni, this.fechaFin, this.token).subscribe(
+        (response: any) => {
+          this.tipoCambioData = response.bmx.series[0].datos;
+        },
+        (error) => {
+          console.error('Error al obtener los datos del tipo de cambio', error);
+        }
+      );
+    }
   }
 }
 
