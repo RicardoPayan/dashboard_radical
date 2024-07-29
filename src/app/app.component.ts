@@ -21,7 +21,7 @@ export class AppComponent {
   title = 'examen_radical';
 
   //Variables para controlar las paginaciones
-  page:number = 1;
+  page!:number;
   pageCambio : number = 1
 
 
